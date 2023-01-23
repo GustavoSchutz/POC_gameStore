@@ -35,4 +35,16 @@ async function selectGame(gameId: number) {
     )
 }
 
-export { insertGame, insertCategory, relateGametoCategory, selectGame }
+async function deleteGame(gameId: number) {
+    return db.query(
+        `DELETE FROM games WHERE id = $1`, [gameId]
+    )
+}
+
+async function deleteCategory(categoryId: number) {
+    return db.query(
+        `DELETE FROM categories WHERE id = $1`, [categoryId]
+    )
+}
+
+export { insertGame, insertCategory, relateGametoCategory, selectGame, deleteCategory, deleteGame }

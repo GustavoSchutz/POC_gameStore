@@ -115,4 +115,38 @@ async function getGameById(req: Request, res: Response) {
 
 }
 
-export { newGame, newCategory,addCategoryToGame, getGameById }
+async function deleteGameById(req: Request, res: Response) {
+
+    const gameId: number = req.body.gameId;
+
+    try {
+
+        const deleteGameById = await gameRepo.deleteGame(gameId);
+        return res.status(httpStatus.OK);
+
+    } catch (error) {
+        console.log(error);
+
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro interno');
+    }
+
+}
+
+async function deleteCategoryById(req: Request, res: Response) {
+
+    const categoryId: number = req.body.categoryId;
+
+    try {
+
+        const deleteCategoryById = await gameRepo.deleteCategory(categoryId);
+        return res.status(httpStatus.OK);
+
+    } catch (error) {
+        console.log(error);
+
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro interno');
+    }
+
+}
+
+export { newGame, newCategory,addCategoryToGame, getGameById, deleteGameById, deleteCategoryById }
