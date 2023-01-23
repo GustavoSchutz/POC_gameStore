@@ -104,7 +104,6 @@ async function getGameById(req: Request, res: Response) {
     try {
 
         const getGameById = await gameRepo.selectGame(gameId);
-        console.log(getGameById.rows);
         return res.status(httpStatus.OK).send(getGameById.rows);
 
     } catch (error) {

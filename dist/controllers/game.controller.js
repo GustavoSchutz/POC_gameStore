@@ -154,4 +154,50 @@ function getGameById(req, res) {
         });
     });
 }
-export { newGame, newCategory, addCategoryToGame, getGameById };
+function deleteGameById(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var gameId, deleteGameById_1, error_5;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    gameId = req.body.gameId;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, gameRepo.deleteGame(gameId)];
+                case 2:
+                    deleteGameById_1 = _a.sent();
+                    return [2 /*return*/, res.status(httpStatus.OK)];
+                case 3:
+                    error_5 = _a.sent();
+                    console.log(error_5);
+                    return [2 /*return*/, res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro interno')];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function deleteCategoryById(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var categoryId, deleteCategoryById_1, error_6;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    categoryId = req.body.categoryId;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, gameRepo.deleteCategory(categoryId)];
+                case 2:
+                    deleteCategoryById_1 = _a.sent();
+                    return [2 /*return*/, res.status(httpStatus.OK)];
+                case 3:
+                    error_6 = _a.sent();
+                    console.log(error_6);
+                    return [2 /*return*/, res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro interno')];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export { newGame, newCategory, addCategoryToGame, getGameById, deleteGameById, deleteCategoryById };

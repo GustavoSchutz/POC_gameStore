@@ -65,4 +65,18 @@ function selectGame(gameId) {
         });
     });
 }
-export { insertGame, insertCategory, relateGametoCategory, selectGame };
+function deleteGame(gameId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, db.query("DELETE FROM games WHERE id = $1", [gameId])];
+        });
+    });
+}
+function deleteCategory(categoryId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, db.query("DELETE FROM categories WHERE id = $1", [categoryId])];
+        });
+    });
+}
+export { insertGame, insertCategory, relateGametoCategory, selectGame, deleteCategory, deleteGame };
